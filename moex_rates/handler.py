@@ -23,6 +23,7 @@ class Handler:
             self.rows_num = self.convert_to_excel()
             self.make_getter_address()
             self.send_email()
+            print("Successfully sent!!!")
         except (
             ValueError,
             RequestException,
@@ -33,18 +34,23 @@ class Handler:
             print(e)
 
     def make_getter_address(self) -> None:
-        address = input(
-            'Enter getter address.\n'
-            'if you want to send message to default address'
-            f' {Constants.EmailDefaults.GETTER} '
-            'enter empty string\n'
-            '> ').replace(' ', '')
-        if address != '':
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        message = 'Enter getter address.\n'\
+            'if you want to send message to default address'\
+            f' {Constants.EmailDefaults.GETTER} '\
+            'enter empty string\n' \
+            '> '
+
+        address = 'nothing'
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        while address != '' or fullmatch(regex, address):
+            address = input(message).replace(' ', '')
+            if address == '':
+                break
             if fullmatch(regex, address):
                 self.getter = address
             else:
                 print(f"Incorrect address {address}")
+                message = 'Try again\n> '
         print(f'Getter address: {self.getter}')
         print(f'Sender address: {self.sender}')
         print(f'Copy address: {self.copy}')

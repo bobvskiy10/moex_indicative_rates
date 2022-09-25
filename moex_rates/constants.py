@@ -43,8 +43,8 @@ class Constants:
     class EmailDefaults:
         SENDER = 'moex.rates.prev.month@gmail.com'
         SENDER_PASS = 'dmzhmyoiumtmbxtd'
-        GETTER = 'bobovskiy.10@yandex.ru'
-        COPY_MAIL = 'bobovskiy.10@gmail.com'
+        GETTER = 'bobovskiy.10@gmail.com'
+        COPY_MAIL = 'IAVikharev@Greenatom.ru'
         FILENAME = 'moex_inidicative_rates_previous_month.xlsx'
         SUBJECT = 'Индикативные курсы валют за прошлый месяц с сайта московской биржы'
-        'IAVikharev@Greenatom.ru'
+
